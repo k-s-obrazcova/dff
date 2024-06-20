@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+    <h1>Доступные ссылки: </h1>
+    <div>
+        <ul>
+            <li><a href="/lib/query/books/">Все книги в системе</a></li>
+            <li><a href="/lib/query/books/1">Вывод книги с ID 1</a></li>
+            <li><a href="/lib/query/books/one-filter/">Фильтр без данных</a></li>
+            <li><a href="/lib/query/books/one-filter/?is_ex=True">Изданные книги</a></li>
+            <li><a href="/lib/query/books/one-filter/?is_ex=False">Анонсированные книги</a></li>
+            <li><a href="/lib/query/books/more-filter/?min_price=150&max_price=860">Фильтр по максимальной границе</a></li>
+            <li><a href="/lib/query/books/more-filter/?min_price=50&max_price=859">Фильтр по минимальной границе</a></li>
+            <li><a href="/lib/query/books/one-by-one-filter/?max_price=500&name=N">Фильтр по имени и цене</a></li>
+            <li><a href="/lib/query/books/create_blank/">Создание пустой книги</a></li>
+            <li><a href="/lib/query/books/create/">Создать книгу</a></li>
+            <li><a href="/lib/query/books/update/2">Обновить цену до 1000</a></li>
+        </ul>
+    </div>
+</body>
+</html>

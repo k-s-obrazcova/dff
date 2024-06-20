@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вывод всех книг</title>
+</head>
+<body>
+    <a href="/lib/">Назад</a>
+
+    <h1>Вывод переменной list</h1>
+    <p>
+        {{ list }}
+    </p>
+
+    {% for obj in list %}
+        <h1>Название книги: {{ obj.name }}</h1>
+        <p>ID: {{ obj.pk }}</p>
+        <p>Описание: {{ obj.description }}</p>
+        <p>Количество страниц: {{ obj.count_pages }}</p>
+        <p>Цена: {{ obj.price }}</p>
+    {% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Домашняя страница</title>
+</head>
+<body>
+    {% if messages %}
+        <h1>ОПОВЕЩЕНИЕ</h1>
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h1>Домашняя страница</h1>
+    <ul>
+        <li>
+            <a href="{% url 'catalog_supplier_page' %}">Список поставщиков </a>
+        </li>
+        <li>
+            <a href="{% url 'anon' %}">Проверка анонимной страницы</a>
+        </li>
+        <li>
+            <a href="{% url 'auth' %}">Проверка авторизованной страницы</a>
+        </li>
+        <li>
+            <a href="{% url 'add' %}">Проверка страницы с добавлением поставщика</a>
+        </li>
+        <li>
+            <a href="{% url 'add_change' %}">Проверка страница с добавлением и изменением поставщика</a>
+        </li>
+        <li>
+            <a href="{% url 'change_address' %}">Проверка страницы с изменением адреса поставщика</a>
+        </li>
+        {% if request.user.is_anonymous %}
+        <li>
+            <a href="{% url 'regis' %}">Регистрация пользователя</a>
+        </li>
+        <li>
+            <a href="{% url 'log in' %}">Авторизация пользователя</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url 'log out' %}">Выход из аккаунта</a>
+        </li>
+        {% endif %}
+    </ul>
+
+    <div>
+        {% if request.user.is_anonymous %}
+            <h2>Аноним</h2>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <h2>Авторизованный</h2>
+        {% endif %}
+
+
+        {% if perms.magazine.add_supplier %}
+            <h2>Может добавить поставщика</h2>
+        {% endif %}
+
+        {% if perms.magazine.add_supplier and perms.magazine.change_supplier %}
+            <h2>Может добавить и изменить поставщика</h2>
+        {% endif %}
+
+        {% if perms.magazine.change_address %}
+            <h2>Может изменять адрес поставщика</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
